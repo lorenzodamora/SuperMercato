@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Articolo.cs" />
     <Compile Include="Cassa.cs">
       <SubType>Form</SubType>
     </Compile>
