@@ -57,6 +57,7 @@
     <Compile Include="Cassa.Designer.cs">
       <DependentUpon>Cassa.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomDate.cs" />
     <Compile Include="Starter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
