@@ -10,11 +10,19 @@ namespace Cassa
 
 		internal ushort wDay;
 
+		/** inserire parametro a 0 per impostare il corrispettivo odierno */
 		internal CustomDate(int year, int month = 1, int day = 1)
 		{
-			wYear = (ushort)year;
-			wMonth = (ushort)month;
-			wDay = (ushort)day;
+			CustomDate today = Today;
+			if(year == 0)
+				wYear = (ushort)today.Year;
+			else wYear = (ushort)year;
+			if(month == 0)
+				wMonth = (ushort)today.Month;
+			else wMonth = (ushort)month;
+			if(day == 0)
+				wDay = (ushort)today.Day;
+			else wDay = (ushort)day;
 		}
 
 		public static CustomDate Today
@@ -22,9 +30,16 @@ namespace Cassa
 			get
 			{
 				var data = DateTime.Today;
-				return new CustomDate(data.Year, data.Month, data.Day);
+				return new CustomDate
+				{
+					Year = data.Year,
+					Month = data.Month,
+					Day = data.Day
+				};
 			}
 		}
+
+		public static int ThisYear => DateTime.Today.Year;
 
 		public override bool Equals(object obj)
 		{
@@ -51,6 +66,8 @@ namespace Cassa
 		{
 			return left.wYear != right.wYear && left.wMonth != right.wMonth && left.wDay != right.wDay;
 		}
+
+		public override string ToString() => $"{Day:D2}/{Month:D2}/{Year:D4}";
 
 		public int Year
 		{

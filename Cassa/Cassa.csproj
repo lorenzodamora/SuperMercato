@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classe Articolo\ArticoloNonAlimentare.cs" />
+    <Compile Include="Classe Articolo\ArticoloAlimentareFresco.cs" />
     <Compile Include="Classe Articolo\ArticoloAlimentare.cs" />
     <Compile Include="Classe Articolo\Articolo.cs" />
     <Compile Include="Cassa.cs">

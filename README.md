@@ -1,0 +1,1 @@
+Per pushare subito, in classe, ho creato il branch "da smistare", separato da master, perciò sta tutto lì e non in master

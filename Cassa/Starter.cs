@@ -29,11 +29,21 @@ namespace Cassa
 	 * 
 	 * Utilizzare un array per memorizzare le informazioni degli articoli inseriti.
 	 */
+	/*
+	 * metodo "compare" a tutte le classi:
+	 * confrontare il prezzo di due oggetti
+	 * return:
+	 *		-1 se il primo è minore del secondo,
+	 *		0 se gli oggetti hanno lo stesso prezzo,
+	 *		1 se il primo è maggiore del secondo.
+	 * stampa ordinata degli articoli presenti nello scontrino.
+	 */
 	internal static class Starter
 	{
 		[STAThread]
 		static void Main()
 		{
+			Console.WriteLine(CustomDate.Today);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Cassa());

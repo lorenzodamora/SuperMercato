@@ -31,9 +31,9 @@ namespace Cassa
 
 		public Articolo()
 		{
-			_codice = null;
-			_descrizione = null;
-			_prezzo = 0;
+			_codice = "1";
+			_descrizione = "Articolo Predefinito";
+			_prezzo = 0.01f;
 		}
 
 		public Articolo(string codice, string descrizione, float prezzo)
@@ -43,8 +43,8 @@ namespace Cassa
 			PrezzoUnitario = prezzo;
 		}
 
-		public Articolo(Articolo ap)
-			: this(ap.Codice, ap.Descrizione, ap.PrezzoUnitario) { }
+		public Articolo(Articolo articolo)
+			: this(articolo.Codice, articolo.Descrizione, articolo.PrezzoUnitario) { }
 
 		public Articolo Clone() => (Articolo)MemberwiseClone();
 
