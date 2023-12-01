@@ -6,7 +6,7 @@
 		public int NumGiorni
 		{
 			get => _numgiorni;
-			set
+			private set
 			{
 				if(value < 6 && value > 0)
 					_numgiorni = value;

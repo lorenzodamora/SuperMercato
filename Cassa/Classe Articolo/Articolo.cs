@@ -8,7 +8,12 @@ namespace Cassa
 		public string Codice
 		{
 			get => _codice;
-			private set => _codice = value;
+			private set
+			{
+				if(System.Linq.Enumerable.All(value, char.IsDigit) && !string.IsNullOrEmpty(value))
+					_codice = value;
+				else throw new ArgumentException("Il codice deve essere esclusivamente numerico [0-9]");
+			}
 		}
 
 		private string _descrizione;
