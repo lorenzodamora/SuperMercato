@@ -5,7 +5,7 @@ namespace Cassa
 {
 	public partial class Cassa : Form
 	{
-		struct Scontrino
+		internal struct Scontrino
 		{
 			internal Articolo[] _articoli;
 			internal int[] _amount;
@@ -83,11 +83,9 @@ namespace Cassa
 		}
 
 		Scontrino scontrino = new Scontrino(20);
-
 		public Cassa()
 		{
 			InitializeComponent();
-
 		}
 
 		/** Switch grafico del dateTimePicker */
@@ -113,10 +111,7 @@ namespace Cassa
 
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns>true se c'è errore</returns>
+		/// <returns>true se c'è errore.</returns>
 		private bool CheckArticolo()
 		{
 			string errore1 = "Errore nell'inserimento";
@@ -162,8 +157,7 @@ namespace Cassa
 				return false;
 			}
 
-			if(IsValidPrice(prezzo))
-			return false;
+			return !IsValidPrice(prezzo);
 		}
 	}
 }
