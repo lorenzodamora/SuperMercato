@@ -71,8 +71,9 @@
 			this.head_descrizione = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.head_prezzo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.head_amount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.head_extra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.head_type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_extra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.btn_faster = new System.Windows.Forms.Button();
 			this.PageAlimentare.SuspendLayout();
 			this.SubPagine.SuspendLayout();
 			this.PageAlimentareNormale.SuspendLayout();
@@ -87,25 +88,27 @@
 			this.btn_riciclabile.Location = new System.Drawing.Point(104, 158);
 			this.btn_riciclabile.Name = "btn_riciclabile";
 			this.btn_riciclabile.Size = new System.Drawing.Size(52, 33);
-			this.btn_riciclabile.TabIndex = 34;
+			this.btn_riciclabile.TabIndex = 7;
 			this.btn_riciclabile.Text = "Si";
 			this.btn_riciclabile.UseVisualStyleBackColor = true;
+			this.btn_riciclabile.Click += new System.EventHandler(this.Riciclabile_Click);
 			// 
 			// btn_sendAlimentareFresco
 			// 
 			this.btn_sendAlimentareFresco.Location = new System.Drawing.Point(226, 30);
 			this.btn_sendAlimentareFresco.Name = "btn_sendAlimentareFresco";
 			this.btn_sendAlimentareFresco.Size = new System.Drawing.Size(84, 217);
-			this.btn_sendAlimentareFresco.TabIndex = 30;
+			this.btn_sendAlimentareFresco.TabIndex = 8;
 			this.btn_sendAlimentareFresco.Text = "Invia";
 			this.btn_sendAlimentareFresco.UseVisualStyleBackColor = true;
+			this.btn_sendAlimentareFresco.Click += new System.EventHandler(this.SendAlimentareFresco_Click);
 			// 
 			// btn_sendAlimentareSemplice
 			// 
 			this.btn_sendAlimentareSemplice.Location = new System.Drawing.Point(226, 30);
 			this.btn_sendAlimentareSemplice.Name = "btn_sendAlimentareSemplice";
 			this.btn_sendAlimentareSemplice.Size = new System.Drawing.Size(84, 217);
-			this.btn_sendAlimentareSemplice.TabIndex = 22;
+			this.btn_sendAlimentareSemplice.TabIndex = 8;
 			this.btn_sendAlimentareSemplice.Text = "Invia";
 			this.btn_sendAlimentareSemplice.UseVisualStyleBackColor = true;
 			this.btn_sendAlimentareSemplice.Click += new System.EventHandler(this.SendAlimentareSemplice_Click);
@@ -116,17 +119,22 @@
 			this.btn_sendNonAlimentare.Location = new System.Drawing.Point(236, 57);
 			this.btn_sendNonAlimentare.Name = "btn_sendNonAlimentare";
 			this.btn_sendNonAlimentare.Size = new System.Drawing.Size(84, 217);
-			this.btn_sendNonAlimentare.TabIndex = 30;
+			this.btn_sendNonAlimentare.TabIndex = 8;
 			this.btn_sendNonAlimentare.Text = "Invia";
 			this.btn_sendNonAlimentare.UseVisualStyleBackColor = true;
+			this.btn_sendNonAlimentare.Click += new System.EventHandler(this.SendNonAlimentare_Click);
 			// 
 			// date_scadenza
 			// 
 			this.date_scadenza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.date_scadenza.ImeMode = System.Windows.Forms.ImeMode.Disable;
 			this.date_scadenza.Location = new System.Drawing.Point(10, 43);
+			this.date_scadenza.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+			this.date_scadenza.MinDate = new System.DateTime(2023, 12, 8, 0, 0, 0, 0);
 			this.date_scadenza.Name = "date_scadenza";
 			this.date_scadenza.Size = new System.Drawing.Size(210, 21);
-			this.date_scadenza.TabIndex = 23;
+			this.date_scadenza.TabIndex = 6;
+			this.date_scadenza.Value = new System.DateTime(2023, 12, 8, 0, 0, 0, 0);
 			// 
 			// GraphicTitle
 			// 
@@ -137,7 +145,7 @@
 			this.GraphicTitle.Location = new System.Drawing.Point(596, 1);
 			this.GraphicTitle.Name = "GraphicTitle";
 			this.GraphicTitle.Size = new System.Drawing.Size(400, 40);
-			this.GraphicTitle.TabIndex = 16;
+			this.GraphicTitle.TabIndex = 10;
 			this.GraphicTitle.Text = "REGISTRATORE DI CASSA";
 			this.GraphicTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
@@ -150,7 +158,7 @@
 			this.lbl_articolo.Location = new System.Drawing.Point(205, 9);
 			this.lbl_articolo.Name = "lbl_articolo";
 			this.lbl_articolo.Size = new System.Drawing.Size(142, 45);
-			this.lbl_articolo.TabIndex = 17;
+			this.lbl_articolo.TabIndex = 10;
 			this.lbl_articolo.Text = "Articolo";
 			this.lbl_articolo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
@@ -161,7 +169,7 @@
 			this.lbl_amount.Location = new System.Drawing.Point(301, 123);
 			this.lbl_amount.Name = "lbl_amount";
 			this.lbl_amount.Size = new System.Drawing.Size(56, 16);
-			this.lbl_amount.TabIndex = 26;
+			this.lbl_amount.TabIndex = 10;
 			this.lbl_amount.Text = "Quantità";
 			// 
 			// lbl_codice
@@ -171,7 +179,7 @@
 			this.lbl_codice.Location = new System.Drawing.Point(34, 63);
 			this.lbl_codice.Name = "lbl_codice";
 			this.lbl_codice.Size = new System.Drawing.Size(98, 16);
-			this.lbl_codice.TabIndex = 19;
+			this.lbl_codice.TabIndex = 10;
 			this.lbl_codice.Text = "Codice Articolo";
 			// 
 			// lbl_descrizione
@@ -181,7 +189,7 @@
 			this.lbl_descrizione.Location = new System.Drawing.Point(34, 122);
 			this.lbl_descrizione.Name = "lbl_descrizione";
 			this.lbl_descrizione.Size = new System.Drawing.Size(78, 16);
-			this.lbl_descrizione.TabIndex = 20;
+			this.lbl_descrizione.TabIndex = 10;
 			this.lbl_descrizione.Text = "Descrizione";
 			// 
 			// lbl_materiale
@@ -190,7 +198,7 @@
 			this.lbl_materiale.Location = new System.Drawing.Point(17, 57);
 			this.lbl_materiale.Name = "lbl_materiale";
 			this.lbl_materiale.Size = new System.Drawing.Size(63, 16);
-			this.lbl_materiale.TabIndex = 31;
+			this.lbl_materiale.TabIndex = 10;
 			this.lbl_materiale.Text = "Materiale";
 			// 
 			// lbl_prezzo
@@ -200,7 +208,7 @@
 			this.lbl_prezzo.Location = new System.Drawing.Point(301, 63);
 			this.lbl_prezzo.Name = "lbl_prezzo";
 			this.lbl_prezzo.Size = new System.Drawing.Size(97, 16);
-			this.lbl_prezzo.TabIndex = 21;
+			this.lbl_prezzo.TabIndex = 10;
 			this.lbl_prezzo.Text = "Prezzo Unitario";
 			// 
 			// lbl_riciclabile
@@ -210,7 +218,7 @@
 			this.lbl_riciclabile.Location = new System.Drawing.Point(16, 155);
 			this.lbl_riciclabile.Name = "lbl_riciclabile";
 			this.lbl_riciclabile.Size = new System.Drawing.Size(82, 36);
-			this.lbl_riciclabile.TabIndex = 33;
+			this.lbl_riciclabile.TabIndex = 10;
 			this.lbl_riciclabile.Text = "Riciclabile?\r\nNo";
 			this.lbl_riciclabile.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
@@ -220,7 +228,7 @@
 			this.lbl_scadenza.Location = new System.Drawing.Point(7, 27);
 			this.lbl_scadenza.Name = "lbl_scadenza";
 			this.lbl_scadenza.Size = new System.Drawing.Size(68, 16);
-			this.lbl_scadenza.TabIndex = 30;
+			this.lbl_scadenza.TabIndex = 10;
 			this.lbl_scadenza.Text = "Scadenza";
 			// 
 			// lbl_scadenzaFresco
@@ -229,7 +237,7 @@
 			this.lbl_scadenzaFresco.Location = new System.Drawing.Point(7, 178);
 			this.lbl_scadenzaFresco.Name = "lbl_scadenzaFresco";
 			this.lbl_scadenzaFresco.Size = new System.Drawing.Size(241, 16);
-			this.lbl_scadenzaFresco.TabIndex = 30;
+			this.lbl_scadenzaFresco.TabIndex = 10;
 			this.lbl_scadenzaFresco.Text = "Numero giorni scadenza dopo apertura";
 			// 
 			// PageAlimentare
@@ -239,7 +247,7 @@
 			this.PageAlimentare.Name = "PageAlimentare";
 			this.PageAlimentare.Padding = new System.Windows.Forms.Padding(3);
 			this.PageAlimentare.Size = new System.Drawing.Size(1098, 658);
-			this.PageAlimentare.TabIndex = 0;
+			this.PageAlimentare.TabIndex = 10;
 			this.PageAlimentare.Text = "Alimentare";
 			this.PageAlimentare.UseVisualStyleBackColor = true;
 			// 
@@ -251,7 +259,7 @@
 			this.SubPagine.Name = "SubPagine";
 			this.SubPagine.SelectedIndex = 0;
 			this.SubPagine.Size = new System.Drawing.Size(1086, 646);
-			this.SubPagine.TabIndex = 0;
+			this.SubPagine.TabIndex = 5;
 			this.SubPagine.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.SubPagine_Selecting);
 			// 
 			// PageAlimentareNormale
@@ -264,7 +272,7 @@
 			this.PageAlimentareNormale.Name = "PageAlimentareNormale";
 			this.PageAlimentareNormale.Padding = new System.Windows.Forms.Padding(3);
 			this.PageAlimentareNormale.Size = new System.Drawing.Size(1078, 617);
-			this.PageAlimentareNormale.TabIndex = 0;
+			this.PageAlimentareNormale.TabIndex = 10;
 			this.PageAlimentareNormale.Text = "Semplice";
 			this.PageAlimentareNormale.UseVisualStyleBackColor = true;
 			// 
@@ -281,7 +289,7 @@
 			this.view_alimentareSemplice.Location = new System.Drawing.Point(329, 20);
 			this.view_alimentareSemplice.Name = "view_alimentareSemplice";
 			this.view_alimentareSemplice.Size = new System.Drawing.Size(733, 554);
-			this.view_alimentareSemplice.TabIndex = 31;
+			this.view_alimentareSemplice.TabIndex = 10;
 			this.view_alimentareSemplice.UseCompatibleStateImageBehavior = false;
 			this.view_alimentareSemplice.View = System.Windows.Forms.View.Details;
 			// 
@@ -328,7 +336,7 @@
 			this.PageAlimentareFresco.Name = "PageAlimentareFresco";
 			this.PageAlimentareFresco.Padding = new System.Windows.Forms.Padding(3);
 			this.PageAlimentareFresco.Size = new System.Drawing.Size(1078, 617);
-			this.PageAlimentareFresco.TabIndex = 1;
+			this.PageAlimentareFresco.TabIndex = 10;
 			this.PageAlimentareFresco.Text = "Fresco";
 			this.PageAlimentareFresco.UseVisualStyleBackColor = true;
 			// 
@@ -346,7 +354,7 @@
 			this.view_alimentareFresco.Location = new System.Drawing.Point(316, 21);
 			this.view_alimentareFresco.Name = "view_alimentareFresco";
 			this.view_alimentareFresco.Size = new System.Drawing.Size(743, 563);
-			this.view_alimentareFresco.TabIndex = 32;
+			this.view_alimentareFresco.TabIndex = 10;
 			this.view_alimentareFresco.UseCompatibleStateImageBehavior = false;
 			this.view_alimentareFresco.View = System.Windows.Forms.View.Details;
 			// 
@@ -394,7 +402,7 @@
 			this.txt_scadenzaFresco.Location = new System.Drawing.Point(10, 197);
 			this.txt_scadenzaFresco.Name = "txt_scadenzaFresco";
 			this.txt_scadenzaFresco.Size = new System.Drawing.Size(187, 31);
-			this.txt_scadenzaFresco.TabIndex = 31;
+			this.txt_scadenzaFresco.TabIndex = 7;
 			// 
 			// PageNonAlimentare
 			// 
@@ -408,7 +416,7 @@
 			this.PageNonAlimentare.Name = "PageNonAlimentare";
 			this.PageNonAlimentare.Padding = new System.Windows.Forms.Padding(3);
 			this.PageNonAlimentare.Size = new System.Drawing.Size(1098, 658);
-			this.PageNonAlimentare.TabIndex = 1;
+			this.PageNonAlimentare.TabIndex = 10;
 			this.PageNonAlimentare.Text = "NonAlimentare";
 			this.PageNonAlimentare.UseVisualStyleBackColor = true;
 			// 
@@ -426,7 +434,7 @@
 			this.view_nonAlimentare.Location = new System.Drawing.Point(337, 32);
 			this.view_nonAlimentare.Name = "view_nonAlimentare";
 			this.view_nonAlimentare.Size = new System.Drawing.Size(743, 563);
-			this.view_nonAlimentare.TabIndex = 33;
+			this.view_nonAlimentare.TabIndex = 10;
 			this.view_nonAlimentare.UseCompatibleStateImageBehavior = false;
 			this.view_nonAlimentare.View = System.Windows.Forms.View.Details;
 			// 
@@ -474,7 +482,7 @@
 			this.txt_materiale.Location = new System.Drawing.Point(20, 73);
 			this.txt_materiale.Name = "txt_materiale";
 			this.txt_materiale.Size = new System.Drawing.Size(204, 31);
-			this.txt_materiale.TabIndex = 32;
+			this.txt_materiale.TabIndex = 6;
 			// 
 			// Pagine
 			// 
@@ -485,7 +493,7 @@
 			this.Pagine.Name = "Pagine";
 			this.Pagine.SelectedIndex = 0;
 			this.Pagine.Size = new System.Drawing.Size(1106, 687);
-			this.Pagine.TabIndex = 0;
+			this.Pagine.TabIndex = 4;
 			// 
 			// txt_amount
 			// 
@@ -493,7 +501,7 @@
 			this.txt_amount.Location = new System.Drawing.Point(304, 142);
 			this.txt_amount.Name = "txt_amount";
 			this.txt_amount.Size = new System.Drawing.Size(204, 31);
-			this.txt_amount.TabIndex = 29;
+			this.txt_amount.TabIndex = 3;
 			// 
 			// txt_codice
 			// 
@@ -502,7 +510,7 @@
 			this.txt_codice.MaxLength = 20;
 			this.txt_codice.Name = "txt_codice";
 			this.txt_codice.Size = new System.Drawing.Size(204, 31);
-			this.txt_codice.TabIndex = 25;
+			this.txt_codice.TabIndex = 0;
 			// 
 			// txt_descrizione
 			// 
@@ -510,7 +518,7 @@
 			this.txt_descrizione.Location = new System.Drawing.Point(37, 138);
 			this.txt_descrizione.Name = "txt_descrizione";
 			this.txt_descrizione.Size = new System.Drawing.Size(204, 31);
-			this.txt_descrizione.TabIndex = 18;
+			this.txt_descrizione.TabIndex = 1;
 			// 
 			// txt_prezzo
 			// 
@@ -518,7 +526,7 @@
 			this.txt_prezzo.Location = new System.Drawing.Point(304, 79);
 			this.txt_prezzo.Name = "txt_prezzo";
 			this.txt_prezzo.Size = new System.Drawing.Size(204, 31);
-			this.txt_prezzo.TabIndex = 28;
+			this.txt_prezzo.TabIndex = 2;
 			// 
 			// view_articolo
 			// 
@@ -534,7 +542,7 @@
 			this.view_articolo.Location = new System.Drawing.Point(12, 179);
 			this.view_articolo.Name = "view_articolo";
 			this.view_articolo.Size = new System.Drawing.Size(574, 554);
-			this.view_articolo.TabIndex = 30;
+			this.view_articolo.TabIndex = 10;
 			this.view_articolo.UseCompatibleStateImageBehavior = false;
 			this.view_articolo.View = System.Windows.Forms.View.Details;
 			// 
@@ -567,23 +575,35 @@
 			this.head_amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.head_amount.Width = 55;
 			// 
-			// head_extra
-			// 
-			this.head_extra.Text = "Dettagli";
-			this.head_extra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.head_extra.Width = 173;
-			// 
 			// head_type
 			// 
 			this.head_type.Text = "Tipo";
 			this.head_type.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.head_type.Width = 83;
 			// 
+			// head_extra
+			// 
+			this.head_extra.Text = "Dettagli";
+			this.head_extra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_extra.Width = 173;
+			// 
+			// btn_faster
+			// 
+			this.btn_faster.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_faster.Location = new System.Drawing.Point(1448, 13);
+			this.btn_faster.Name = "btn_faster";
+			this.btn_faster.Size = new System.Drawing.Size(246, 41);
+			this.btn_faster.TabIndex = 11;
+			this.btn_faster.Text = "Riempi predefinito";
+			this.btn_faster.UseVisualStyleBackColor = true;
+			this.btn_faster.Click += new System.EventHandler(this.Faster_Click);
+			// 
 			// Cassa
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1710, 745);
+			this.Controls.Add(this.btn_faster);
 			this.Controls.Add(this.view_articolo);
 			this.Controls.Add(this.txt_amount);
 			this.Controls.Add(this.txt_prezzo);
@@ -670,5 +690,6 @@
 		private System.Windows.Forms.ColumnHeader head_materiale_nonAlimentare;
 		private System.Windows.Forms.ColumnHeader head_riciclabile_nonAlimentare;
 		private System.Windows.Forms.ColumnHeader head_type;
+		private System.Windows.Forms.Button btn_faster;
 	}
 }

@@ -14,7 +14,7 @@ namespace Cassa
 	 * ridefinire il metodo sconta() in base alle seguenti regole:
 	 * - articoli alimentari: sconto +20% se l’anno di scadenza è quello attuale;
 	 * - alimentari freschi, sconto + (2*(6 - g))%
-	 * - non al: sconto +10% se materiale riciclabile. 
+	 * - non al: sconto +10% se materiale riciclabile.
 	 * 
 	 * diagramma UML + programma windows form: simulare la cassa:
 	 * - inserire le info degli articoli, distinguendoli

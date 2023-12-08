@@ -47,6 +47,9 @@
 
 		public override int GetHashCode() => (Codice, Descrizione, PrezzoUnitario, DataScadenza, NumGiorni).GetHashCode();
 
+		public static explicit operator ArticoloAlimentareFresco(string[] v)
+			=> new ArticoloAlimentareFresco(v[0], v[1], float.Parse(v[2]), (CustomDate)v[3], int.Parse(v[4]));
+
 		public override string ToString() => $"{base.ToString()};{NumGiorni}";
 
 		public override float Sconta(bool carta)

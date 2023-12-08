@@ -56,6 +56,9 @@
 
 		public override int GetHashCode() => (Codice, Descrizione, PrezzoUnitario, Materiale, Riciclable).GetHashCode();
 
+		public static explicit operator ArticoloNonAlimentare(string[] v)
+	=> new ArticoloNonAlimentare(v[0], v[1], float.Parse(v[2]), v[3], v[4] == "Si");
+
 		public override string ToString() => $"{base.ToString()};{Materiale};{Riciclable}";
 
 		//metodo sconta
