@@ -135,13 +135,13 @@ namespace Cassa
 			view_alimentareSemplice.Items.Add(item);
 
 			var item_ = item.Clone() as ListViewItem;
-				item_.Text = (view_articolo.Items.Count+1).ToString();
+			item_.Text = (view_articolo.Items.Count+1).ToString();
 			item_.SubItems[5].Text = "alimentare";
 			item_.SubItems.Add($"scadenza: {(CustomDate)date_scadenza.Value}");
 			view_articolo.Items.Add(item_);
 
 			scontrino.Add(
-				(ArticoloAlimentare)(new string[]{ articolo[0], articolo[1], articolo[2], articolo[4] }),
+				(ArticoloAlimentare)(new string[] { articolo[0], articolo[1], articolo[2], articolo[4] }),
 				int.Parse(articolo[3])
 			);
 		}
