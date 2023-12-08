@@ -88,7 +88,7 @@ namespace Cassa
 			InitializeComponent();
 		}
 
-		/** Switch grafico del dateTimePicker */
+		/// <summary> Switch grafico del dateTimePicker </summary>
 		void SubPagine_Selecting(object sender, TabControlCancelEventArgs e)
 		{
 			if((sender as TabControl).SelectedTab == PageAlimentareFresco)
@@ -107,28 +107,46 @@ namespace Cassa
 
 		private void SendAlimentareSemplice_Click(object sender, EventArgs e)
 		{
-			if(CheckArticolo()) return;
+			if(CheckArticolo() || CheckScadenza()) return;
 
+			string[] articolo = (
+					$"{txt_codice.Text.Trim()};" +
+					$"{txt_descrizione.Text};" +
+					$"{txt_prezzo.Text.Trim()};" +
+					$"{txt_amount.Text.Trim()};" +
+					$"{(CustomDate)date_scadenza.Value}"
+				).Split(';');
+			var item = new ListViewItem((view_alimentareSemplice.Items.Count+1).ToString());
+			foreach(string articoloitem in articolo)
+				item.SubItems.Add(articoloitem);
+			view_alimentareSemplice.Items.Add(item);
+			var item_ = item.Clone() as ListViewItem;
+				item_.Text = (view_articolo.Items.Count+1).ToString();
+			item_.SubItems[5].Text = "alimentare";
+			item_.SubItems.Add($"scadenza: {(CustomDate)date_scadenza.Value}");
+			view_articolo.Items.Add(item_);
 		}
 
 		/// <returns>true se c'è errore.</returns>
 		private bool CheckArticolo()
 		{
-			string errore1 = "Errore nell'inserimento";
+			string errore = "Errore nell'inserimento";
 			string codice = txt_codice.Text.Trim();
 			string prezzo = txt_prezzo.Text.Trim();
-			if(codice == "" || txt_descrizione.Text == "" || prezzo == "")
+			string amount = txt_amount.Text.Trim();
+			if(codice == "" || txt_descrizione.Text == "" || prezzo == "" || amount == "")
 			{
-				MessageBox.Show("Riempi almeno le TextBox: Codice, Descrizione, Prezzo.", errore1);
+				MessageBox.Show("Riempi almeno le TextBox: Codice, Descrizione, Prezzo, Quantità.", errore);
 				return true;
 			}
 			if(!System.Linq.Enumerable.All(codice, char.IsDigit))
 			{
-				MessageBox.Show("Il Codice deve essere solo numerico [0-9]", errore1);
+				MessageBox.Show("Il Codice deve essere solo numerico [0-9]", errore);
 				return true;
 			}
 
-			/// funzione locale
+			/// <summary>funzione locale</summary>
+			/// <returns>true se è valido.</returns>
 			bool IsValidPrice(string input)
 			{
 				/**
@@ -157,7 +175,29 @@ namespace Cassa
 				return false;
 			}
 
-			return !IsValidPrice(prezzo);
+			if(!IsValidPrice(prezzo))
+			{
+				MessageBox.Show("Il prezzo non è valido", errore);
+				return true;
+			}
+			if(!int.TryParse(amount, out int amount_) || amount_ < 1)
+			{
+				MessageBox.Show("La quantità non è valida", errore);
+				return true;
+			}
+
+			return false;
+		}
+
+		/// <returns>true se c'è errore.</returns>
+		private bool CheckScadenza()
+		{
+			if(date_scadenza.Value < DateTime.Today)
+			{
+				MessageBox.Show("L'articolo è già scaduto.", "Articolo non vendibile");
+				return true;
+			}
+			return false;
 		}
 	}
 }

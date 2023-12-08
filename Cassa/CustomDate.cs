@@ -25,19 +25,7 @@ namespace Cassa
 			else wDay = (ushort)day;
 		}
 
-		public static CustomDate Today
-		{
-			get
-			{
-				var data = DateTime.Today;
-				return new CustomDate
-				{
-					Year = data.Year,
-					Month = data.Month,
-					Day = data.Day
-				};
-			}
-		}
+		public static CustomDate Today => (CustomDate)DateTime.Today;
 
 		public static int ThisYear => DateTime.Today.Year;
 
@@ -65,6 +53,16 @@ namespace Cassa
 		public static bool operator !=(CustomDate left, CustomDate right)
 		{
 			return left.wYear != right.wYear && left.wMonth != right.wMonth && left.wDay != right.wDay;
+		}
+
+		public static explicit operator CustomDate(DateTime v)
+		{
+			return new CustomDate
+			{
+				Year = v.Year,
+				Month = v.Month,
+				Day = v.Day
+			};
 		}
 
 		public override string ToString() => $"{Day:D2}/{Month:D2}/{Year:D4}";

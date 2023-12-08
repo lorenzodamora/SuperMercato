@@ -21,7 +21,7 @@
 			this.btn_sendNonAlimentare = new System.Windows.Forms.Button();
 			this.date_scadenza = new System.Windows.Forms.DateTimePicker();
 			this.GraphicTitle = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
+			this.lbl_articolo = new System.Windows.Forms.Label();
 			this.lbl_amount = new System.Windows.Forms.Label();
 			this.lbl_codice = new System.Windows.Forms.Label();
 			this.lbl_descrizione = new System.Windows.Forms.Label();
@@ -33,9 +33,32 @@
 			this.PageAlimentare = new System.Windows.Forms.TabPage();
 			this.SubPagine = new System.Windows.Forms.TabControl();
 			this.PageAlimentareNormale = new System.Windows.Forms.TabPage();
+			this.view_alimentareSemplice = new System.Windows.Forms.ListView();
+			this.head_index_alimentareSemplice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_code_alimentareSemplice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_descrizione_alimentareSemplice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_price_alimentareSemplice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_amount_alimentareSemplice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_data_alimentareSemplice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.PageAlimentareFresco = new System.Windows.Forms.TabPage();
+			this.view_alimentareFresco = new System.Windows.Forms.ListView();
+			this.head_index_alimentareFresco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_code_alimentareFresco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_descrizione_alimentareFresco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_price_alimentareFresco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_amount_alimentareFresco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_data_alimentareFresco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_scadenzaFresco_alimentareFresco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.txt_scadenzaFresco = new System.Windows.Forms.TextBox();
 			this.PageNonAlimentare = new System.Windows.Forms.TabPage();
+			this.view_nonAlimentare = new System.Windows.Forms.ListView();
+			this.head_index_nonAlimentare = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_code_nonAlimentare = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_descrizione_nonAlimentare = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_price_nonAlimentare = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_amount_nonAlimentare = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_materiale_nonAlimentare = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_riciclabile_nonAlimentare = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.txt_materiale = new System.Windows.Forms.TextBox();
 			this.Pagine = new System.Windows.Forms.TabControl();
 			this.txt_amount = new System.Windows.Forms.TextBox();
@@ -49,6 +72,7 @@
 			this.head_prezzo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.head_amount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.head_extra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.head_type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.PageAlimentare.SuspendLayout();
 			this.SubPagine.SuspendLayout();
 			this.PageAlimentareNormale.SuspendLayout();
@@ -117,18 +141,18 @@
 			this.GraphicTitle.Text = "REGISTRATORE DI CASSA";
 			this.GraphicTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label1
+			// lbl_articolo
 			// 
-			this.label1.BackColor = System.Drawing.Color.DimGray;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.33962F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.ForeColor = System.Drawing.Color.White;
-			this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.label1.Location = new System.Drawing.Point(205, 9);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(142, 45);
-			this.label1.TabIndex = 17;
-			this.label1.Text = "Articolo";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbl_articolo.BackColor = System.Drawing.Color.DimGray;
+			this.lbl_articolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.33962F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_articolo.ForeColor = System.Drawing.Color.White;
+			this.lbl_articolo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.lbl_articolo.Location = new System.Drawing.Point(205, 9);
+			this.lbl_articolo.Name = "lbl_articolo";
+			this.lbl_articolo.Size = new System.Drawing.Size(142, 45);
+			this.lbl_articolo.TabIndex = 17;
+			this.lbl_articolo.Text = "Articolo";
+			this.lbl_articolo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// lbl_amount
 			// 
@@ -232,6 +256,7 @@
 			// 
 			// PageAlimentareNormale
 			// 
+			this.PageAlimentareNormale.Controls.Add(this.view_alimentareSemplice);
 			this.PageAlimentareNormale.Controls.Add(this.lbl_scadenza);
 			this.PageAlimentareNormale.Controls.Add(this.date_scadenza);
 			this.PageAlimentareNormale.Controls.Add(this.btn_sendAlimentareSemplice);
@@ -243,8 +268,59 @@
 			this.PageAlimentareNormale.Text = "Semplice";
 			this.PageAlimentareNormale.UseVisualStyleBackColor = true;
 			// 
+			// view_alimentareSemplice
+			// 
+			this.view_alimentareSemplice.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.head_index_alimentareSemplice,
+            this.head_code_alimentareSemplice,
+            this.head_descrizione_alimentareSemplice,
+            this.head_price_alimentareSemplice,
+            this.head_amount_alimentareSemplice,
+            this.head_data_alimentareSemplice});
+			this.view_alimentareSemplice.HideSelection = false;
+			this.view_alimentareSemplice.Location = new System.Drawing.Point(329, 20);
+			this.view_alimentareSemplice.Name = "view_alimentareSemplice";
+			this.view_alimentareSemplice.Size = new System.Drawing.Size(733, 554);
+			this.view_alimentareSemplice.TabIndex = 31;
+			this.view_alimentareSemplice.UseCompatibleStateImageBehavior = false;
+			this.view_alimentareSemplice.View = System.Windows.Forms.View.Details;
+			// 
+			// head_index_alimentareSemplice
+			// 
+			this.head_index_alimentareSemplice.Text = "Indice";
+			this.head_index_alimentareSemplice.Width = 50;
+			// 
+			// head_code_alimentareSemplice
+			// 
+			this.head_code_alimentareSemplice.Text = "Codice";
+			this.head_code_alimentareSemplice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// head_descrizione_alimentareSemplice
+			// 
+			this.head_descrizione_alimentareSemplice.Text = "Descrizione";
+			this.head_descrizione_alimentareSemplice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_descrizione_alimentareSemplice.Width = 300;
+			// 
+			// head_price_alimentareSemplice
+			// 
+			this.head_price_alimentareSemplice.Text = "Prezzo Unitario";
+			this.head_price_alimentareSemplice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_price_alimentareSemplice.Width = 110;
+			// 
+			// head_amount_alimentareSemplice
+			// 
+			this.head_amount_alimentareSemplice.Text = "Quantità";
+			this.head_amount_alimentareSemplice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_amount_alimentareSemplice.Width = 70;
+			// 
+			// head_data_alimentareSemplice
+			// 
+			this.head_data_alimentareSemplice.Text = "Scadenza";
+			this.head_data_alimentareSemplice.Width = 100;
+			// 
 			// PageAlimentareFresco
 			// 
+			this.PageAlimentareFresco.Controls.Add(this.view_alimentareFresco);
 			this.PageAlimentareFresco.Controls.Add(this.txt_scadenzaFresco);
 			this.PageAlimentareFresco.Controls.Add(this.lbl_scadenzaFresco);
 			this.PageAlimentareFresco.Controls.Add(this.btn_sendAlimentareFresco);
@@ -256,6 +332,62 @@
 			this.PageAlimentareFresco.Text = "Fresco";
 			this.PageAlimentareFresco.UseVisualStyleBackColor = true;
 			// 
+			// view_alimentareFresco
+			// 
+			this.view_alimentareFresco.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.head_index_alimentareFresco,
+            this.head_code_alimentareFresco,
+            this.head_descrizione_alimentareFresco,
+            this.head_price_alimentareFresco,
+            this.head_amount_alimentareFresco,
+            this.head_data_alimentareFresco,
+            this.head_scadenzaFresco_alimentareFresco});
+			this.view_alimentareFresco.HideSelection = false;
+			this.view_alimentareFresco.Location = new System.Drawing.Point(316, 21);
+			this.view_alimentareFresco.Name = "view_alimentareFresco";
+			this.view_alimentareFresco.Size = new System.Drawing.Size(743, 563);
+			this.view_alimentareFresco.TabIndex = 32;
+			this.view_alimentareFresco.UseCompatibleStateImageBehavior = false;
+			this.view_alimentareFresco.View = System.Windows.Forms.View.Details;
+			// 
+			// head_index_alimentareFresco
+			// 
+			this.head_index_alimentareFresco.Text = "Indice";
+			this.head_index_alimentareFresco.Width = 50;
+			// 
+			// head_code_alimentareFresco
+			// 
+			this.head_code_alimentareFresco.Text = "Codice";
+			this.head_code_alimentareFresco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// head_descrizione_alimentareFresco
+			// 
+			this.head_descrizione_alimentareFresco.Text = "Descrizione";
+			this.head_descrizione_alimentareFresco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_descrizione_alimentareFresco.Width = 196;
+			// 
+			// head_price_alimentareFresco
+			// 
+			this.head_price_alimentareFresco.Text = "Prezzo Unitario";
+			this.head_price_alimentareFresco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_price_alimentareFresco.Width = 110;
+			// 
+			// head_amount_alimentareFresco
+			// 
+			this.head_amount_alimentareFresco.Text = "Quantità";
+			this.head_amount_alimentareFresco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_amount_alimentareFresco.Width = 70;
+			// 
+			// head_data_alimentareFresco
+			// 
+			this.head_data_alimentareFresco.Text = "Scadenza";
+			this.head_data_alimentareFresco.Width = 73;
+			// 
+			// head_scadenzaFresco_alimentareFresco
+			// 
+			this.head_scadenzaFresco_alimentareFresco.Text = "Scadenza dopo apertura";
+			this.head_scadenzaFresco_alimentareFresco.Width = 166;
+			// 
 			// txt_scadenzaFresco
 			// 
 			this.txt_scadenzaFresco.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -266,6 +398,7 @@
 			// 
 			// PageNonAlimentare
 			// 
+			this.PageNonAlimentare.Controls.Add(this.view_nonAlimentare);
 			this.PageNonAlimentare.Controls.Add(this.btn_riciclabile);
 			this.PageNonAlimentare.Controls.Add(this.lbl_riciclabile);
 			this.PageNonAlimentare.Controls.Add(this.txt_materiale);
@@ -278,6 +411,62 @@
 			this.PageNonAlimentare.TabIndex = 1;
 			this.PageNonAlimentare.Text = "NonAlimentare";
 			this.PageNonAlimentare.UseVisualStyleBackColor = true;
+			// 
+			// view_nonAlimentare
+			// 
+			this.view_nonAlimentare.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.head_index_nonAlimentare,
+            this.head_code_nonAlimentare,
+            this.head_descrizione_nonAlimentare,
+            this.head_price_nonAlimentare,
+            this.head_amount_nonAlimentare,
+            this.head_materiale_nonAlimentare,
+            this.head_riciclabile_nonAlimentare});
+			this.view_nonAlimentare.HideSelection = false;
+			this.view_nonAlimentare.Location = new System.Drawing.Point(337, 32);
+			this.view_nonAlimentare.Name = "view_nonAlimentare";
+			this.view_nonAlimentare.Size = new System.Drawing.Size(743, 563);
+			this.view_nonAlimentare.TabIndex = 33;
+			this.view_nonAlimentare.UseCompatibleStateImageBehavior = false;
+			this.view_nonAlimentare.View = System.Windows.Forms.View.Details;
+			// 
+			// head_index_nonAlimentare
+			// 
+			this.head_index_nonAlimentare.Text = "Indice";
+			this.head_index_nonAlimentare.Width = 50;
+			// 
+			// head_code_nonAlimentare
+			// 
+			this.head_code_nonAlimentare.Text = "Codice";
+			this.head_code_nonAlimentare.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// head_descrizione_nonAlimentare
+			// 
+			this.head_descrizione_nonAlimentare.Text = "Descrizione";
+			this.head_descrizione_nonAlimentare.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_descrizione_nonAlimentare.Width = 240;
+			// 
+			// head_price_nonAlimentare
+			// 
+			this.head_price_nonAlimentare.Text = "Prezzo Unitario";
+			this.head_price_nonAlimentare.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_price_nonAlimentare.Width = 110;
+			// 
+			// head_amount_nonAlimentare
+			// 
+			this.head_amount_nonAlimentare.Text = "Quantità";
+			this.head_amount_nonAlimentare.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_amount_nonAlimentare.Width = 70;
+			// 
+			// head_materiale_nonAlimentare
+			// 
+			this.head_materiale_nonAlimentare.Text = "Materiale";
+			this.head_materiale_nonAlimentare.Width = 102;
+			// 
+			// head_riciclabile_nonAlimentare
+			// 
+			this.head_riciclabile_nonAlimentare.Text = "Riciclabile?";
+			this.head_riciclabile_nonAlimentare.Width = 166;
 			// 
 			// txt_materiale
 			// 
@@ -339,6 +528,7 @@
             this.head_descrizione,
             this.head_prezzo,
             this.head_amount,
+            this.head_type,
             this.head_extra});
 			this.view_articolo.HideSelection = false;
 			this.view_articolo.Location = new System.Drawing.Point(12, 179);
@@ -375,11 +565,19 @@
 			// 
 			this.head_amount.Text = "Quantità";
 			this.head_amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_amount.Width = 55;
 			// 
 			// head_extra
 			// 
 			this.head_extra.Text = "Dettagli";
-			this.head_extra.Width = 260;
+			this.head_extra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_extra.Width = 173;
+			// 
+			// head_type
+			// 
+			this.head_type.Text = "Tipo";
+			this.head_type.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.head_type.Width = 83;
 			// 
 			// Cassa
 			// 
@@ -395,7 +593,7 @@
 			this.Controls.Add(this.lbl_descrizione);
 			this.Controls.Add(this.lbl_codice);
 			this.Controls.Add(this.txt_descrizione);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.lbl_articolo);
 			this.Controls.Add(this.GraphicTitle);
 			this.Controls.Add(this.Pagine);
 			this.Name = "Cassa";
@@ -420,7 +618,7 @@
 		private System.Windows.Forms.Button btn_sendNonAlimentare;
 		private System.Windows.Forms.DateTimePicker date_scadenza;
 		private System.Windows.Forms.Label GraphicTitle;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lbl_articolo;
 		private System.Windows.Forms.Label lbl_amount;
 		private System.Windows.Forms.Label lbl_codice;
 		private System.Windows.Forms.Label lbl_descrizione;
@@ -448,5 +646,29 @@
 		private System.Windows.Forms.ColumnHeader head_prezzo;
 		private System.Windows.Forms.ColumnHeader head_amount;
 		private System.Windows.Forms.ColumnHeader head_extra;
+		private System.Windows.Forms.ListView view_alimentareSemplice;
+		private System.Windows.Forms.ColumnHeader head_index_alimentareSemplice;
+		private System.Windows.Forms.ColumnHeader head_code_alimentareSemplice;
+		private System.Windows.Forms.ColumnHeader head_descrizione_alimentareSemplice;
+		private System.Windows.Forms.ColumnHeader head_price_alimentareSemplice;
+		private System.Windows.Forms.ColumnHeader head_amount_alimentareSemplice;
+		private System.Windows.Forms.ColumnHeader head_data_alimentareSemplice;
+		private System.Windows.Forms.ListView view_alimentareFresco;
+		private System.Windows.Forms.ColumnHeader head_index_alimentareFresco;
+		private System.Windows.Forms.ColumnHeader head_code_alimentareFresco;
+		private System.Windows.Forms.ColumnHeader head_descrizione_alimentareFresco;
+		private System.Windows.Forms.ColumnHeader head_price_alimentareFresco;
+		private System.Windows.Forms.ColumnHeader head_amount_alimentareFresco;
+		private System.Windows.Forms.ColumnHeader head_data_alimentareFresco;
+		private System.Windows.Forms.ColumnHeader head_scadenzaFresco_alimentareFresco;
+		private System.Windows.Forms.ListView view_nonAlimentare;
+		private System.Windows.Forms.ColumnHeader head_index_nonAlimentare;
+		private System.Windows.Forms.ColumnHeader head_code_nonAlimentare;
+		private System.Windows.Forms.ColumnHeader head_descrizione_nonAlimentare;
+		private System.Windows.Forms.ColumnHeader head_price_nonAlimentare;
+		private System.Windows.Forms.ColumnHeader head_amount_nonAlimentare;
+		private System.Windows.Forms.ColumnHeader head_materiale_nonAlimentare;
+		private System.Windows.Forms.ColumnHeader head_riciclabile_nonAlimentare;
+		private System.Windows.Forms.ColumnHeader head_type;
 	}
 }
