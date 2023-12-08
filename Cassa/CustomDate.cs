@@ -55,15 +55,14 @@ namespace Cassa
 			return left.wYear != right.wYear && left.wMonth != right.wMonth && left.wDay != right.wDay;
 		}
 
-		public static explicit operator CustomDate(DateTime v)
+		public static explicit operator CustomDate(DateTime v) => new CustomDate
 		{
-			return new CustomDate
-			{
-				Year = v.Year,
-				Month = v.Month,
-				Day = v.Day
-			};
-		}
+			Year = v.Year,
+			Month = v.Month,
+			Day = v.Day
+		};
+
+		public static explicit operator CustomDate(string v) => (CustomDate)DateTime.Parse(v);
 
 		public override string ToString() => $"{Day:D2}/{Month:D2}/{Year:D4}";
 

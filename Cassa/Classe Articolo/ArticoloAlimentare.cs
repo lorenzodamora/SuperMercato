@@ -20,10 +20,8 @@
 			: this(articolo.Codice, articolo.Descrizione, articolo.PrezzoUnitario, articolo.DataScadenza)
 		{ }
 
-		//metodo Clone
 		public new ArticoloAlimentare Clone() => (ArticoloAlimentare)MemberwiseClone(); //new ?
 
-		//metodo Equals
 		public override bool Equals(object obj) => Equals(obj as ArticoloAlimentare);
 
 		public bool Equals(ArticoloAlimentare art)
@@ -33,13 +31,13 @@
 			&& PrezzoUnitario == art.PrezzoUnitario
 			&& DataScadenza == art.DataScadenza;
 
-		//metodo GetHashCode
 		public override int GetHashCode() => (Codice, Descrizione, PrezzoUnitario, DataScadenza).GetHashCode();
 
-		//metodo ToString
+		public static explicit operator ArticoloAlimentare(string[] v)
+			=> new ArticoloAlimentare(v[0], v[1], float.Parse(v[2]), (CustomDate)v[3]);
+
 		public override string ToString() => $"{base.ToString()};{DataScadenza}";
 
-		//metodo sconta
 		public override float Sconta(bool carta)
 		{
 			float finale = PrezzoUnitario;

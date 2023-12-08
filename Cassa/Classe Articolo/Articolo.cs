@@ -60,6 +60,9 @@ namespace Cassa
 
 		public override int GetHashCode() => (Codice, Descrizione, PrezzoUnitario).GetHashCode();
 
+		public static explicit operator Articolo(string[] v)
+			=> new Articolo(v[0], v[1], float.Parse(v[2]));
+
 		public override string ToString() => $"{Codice};{Descrizione};{PrezzoUnitario}";
 
 		public virtual float Sconta(bool carta)
