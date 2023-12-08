@@ -5,33 +5,42 @@ namespace Cassa
 {
 	public partial class Cassa : Form
 	{
+		/// <summary> Struct che contiene anche array che si resize-ano. </summary>
 		internal struct Scontrino
 		{
 			internal Articolo[] _articoli;
 			internal int[] _amount;
-			public int count;
-			public int size;
+			private float _totale;
+			private int _count;
+			private int _size;
 
+			public float Totale => _totale;
+			public float Count => _count;
+			public float Size => _size;
+
+			/// <summary> Attenzione! non ci sono controlli implementati.</summary>
 			public Scontrino(int size)
 			{
 				_articoli = new Articolo[size];
 				_amount = new int[size];
-				count = 0;
-				this.size = size;
+				_count = 0;
+				_totale = 0;
+				_size = size;
 			}
 
+			/// <summary> Attenzione! Modifica del totale non implementata. </summary>
 			public Articolo this[int index]
 			{
 				get
 				{
-					if(index >= 0 && index < count+1)
+					if(index >= 0 && index < _count+1)
 						return _articoli[index];
 					else
 						throw new IndexOutOfRangeException("Index out of range.");
 				}
 				set
 				{
-					if(index >= 0 && index < count+1)
+					if(index >= 0 && index < _count+1)
 						_articoli[index] = value;
 					else
 						throw new IndexOutOfRangeException("Index out of range.");
@@ -40,45 +49,47 @@ namespace Cassa
 
 			public int GetAmount(int index)
 			{
-				if(index >= 0 && index < count + 1)
+				if(index >= 0 && index < _count + 1)
 					return _amount[index];
 				else
 					throw new IndexOutOfRangeException("Index out of range.");
 			}
+			/// <summary> Attenzione! Modifica del totale non implementata. </summary>
 			public void SetAmount(int index, int amount)
 			{
-				if(index >= 0 && index < count + 1)
+				if(index >= 0 && index < _count + 1)
 					_amount[index] = amount;
 				else
 					throw new IndexOutOfRangeException("Index out of range.");
 			}
 
-			private static int GetLength(int tot)
-			{
-				if(tot < 20) return 20;
-				return tot/20 * 20 + 20;
-			}
 			private static void Resize(ref Scontrino scontrino, int newSize)
 			{
-				if(scontrino.size == newSize) return;
+				if(scontrino._size == newSize) return;
 
 				Scontrino s2 = new Scontrino(newSize);
-				if(scontrino.size < newSize) //se newsize è più grande, copia fino ad array.length e il resto rimane default
-					for(int i = 0; i < scontrino.size; ++i)
+				if(scontrino._size < newSize) //se newsize è più grande, copia fino ad array.length e il resto rimane default
+					for(int i = 0; i < scontrino._size; ++i)
 						s2.Add(scontrino[i], scontrino.GetAmount(i));
 				else //se newsize è più piccolo copia fino a newsize
 					for(int i = 0; i < newSize; i++)
 						s2.Add(scontrino[i], scontrino.GetAmount(i));
-				s2.size = newSize;
+				s2._size = newSize;
 				scontrino = s2;
 			}
 
 			public void Add(Articolo articolo, int amount)
 			{
-				if(count == size)
-					Resize(ref this, GetLength(size));
-				_articoli[count] = articolo;
-				_amount[count++] = amount;
+				int GetLength(int tot)
+				{
+					if(tot < 20) return 20;
+					return tot/20 * 20 + 20;
+				}
+				if(_count == _size)
+					Resize(ref this, GetLength(_size));
+				_articoli[_count] = articolo;
+				_amount[_count++] = amount;
+				_totale += articolo.PrezzoUnitario * amount;
 			}
 		}
 
@@ -108,7 +119,7 @@ namespace Cassa
 		private void SendAlimentareSemplice_Click(object sender, EventArgs e)
 		{
 			if(CheckArticolo() || CheckScadenza()) return;
-
+			//////// add to Scontrino?
 			string[] articolo = (
 					$"{txt_codice.Text.Trim()};" +
 					$"{txt_descrizione.Text};" +
